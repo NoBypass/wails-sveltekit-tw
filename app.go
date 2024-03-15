@@ -3,10 +3,14 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/jmoiron/sqlx"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type App struct {
 	ctx context.Context
+	db  *sqlx.DB
 }
 
 func NewApp() *App {
@@ -14,7 +18,12 @@ func NewApp() *App {
 }
 
 func (a *App) startup(ctx context.Context) {
+	db, err := sqlx.Connect("mysql", "root:1234@tcp(localhost:3306)/regio")
+	if err != nil {
+		panic(err)
+	}
 	a.ctx = ctx
+	a.db = db
 }
 
 type Greeting struct {

@@ -4,7 +4,11 @@ go 1.21
 
 toolchain go1.22.1
 
-require github.com/wailsapp/wails/v2 v2.8.0
+require (
+	github.com/go-sql-driver/mysql v1.6.0
+	github.com/jmoiron/sqlx v1.3.5
+	github.com/wailsapp/wails/v2 v2.8.0
+)
 
 require (
 	github.com/bep/debounce v1.2.1 // indirect
